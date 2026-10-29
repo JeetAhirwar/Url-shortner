@@ -722,7 +722,7 @@ h3 {
   /* ---------- Stats ---------- */
   .stats__intro {
     padding-top: 4.5rem;
-    margin-bottom: 4rem;
+    margin-bottom: 6.5rem;
   }
 
   .stats__intro p {
@@ -730,7 +730,7 @@ h3 {
   }
 
   .stats__intro h2 {
-    font-size: 2.5rem;
+    font-size: 2.75rem;
   }
 
   .stats__cards {
@@ -744,29 +744,43 @@ h3 {
     display: none;
   }
 
-  /* Horizontal connector segments: each emerges from the column gap on the
-     left of a card (except the first) and runs to the edge of its circle.
-     Anchored to the card's own top (circle centre) so it stays aligned
-     regardless of card heights. Painted over the card's own white corner,
-     as in the design. */
-  .stat-card:not(:first-child)::after {
+  /* Connector line behind the cards — exactly like the design:
+     a fixed-height bar at the vertical centre of the row, visible only in
+     the two column gaps (hidden under the card backgrounds elsewhere).
+     Anchored with calc() so it tracks any container width. */
+  .stats__cards::before,
+  .stats__cards::after {
     content: "";
     position: absolute;
-    top: 0;
-    left: -1.875rem;
+    top: 50%;
     transform: translateY(-50%);
-    width: 3.875rem;
-    height: 0.5rem;
+    width: 1.875rem;
+    height: 0.6875rem; /* 11px, as in the design */
     background-color: var(--color-cyan);
   }
 
-  /* Stagger the cards */
+  /* First gap: after column 1 */
+  .stats__cards::before {
+    left: calc((100% - 3.75rem) / 3);
+  }
+
+  /* Second gap: after column 2 */
+  .stats__cards::after {
+    left: calc(((100% - 3.75rem) / 3) * 2 + 1.875rem);
+  }
+
+  /* Remove the mobile vertical connector */
+  .stat-card:not(:first-child)::before {
+    display: none;
+  }
+
+  /* Stagger the cards (design uses ~44px per step) */
   .stat-card:nth-child(2) {
-    margin-top: 3rem;
+    margin-top: 2.75rem;
   }
 
   .stat-card:nth-child(3) {
-    margin-top: 6rem;
+    margin-top: 5.5rem;
   }
 
   .stat-card {
@@ -780,7 +794,7 @@ h3 {
   }
 
   .stat-card h3 {
-    margin: 3.75rem 0 1rem;
+    margin: 4.75rem 0 1.5rem;
     text-align: left;
     font-size: var(--fs-h3);
   }
