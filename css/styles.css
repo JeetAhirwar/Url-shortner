@@ -737,6 +737,7 @@ h3 {
     grid-template-columns: repeat(3, 1fr);
     gap: 1.875rem;
     text-align: left;
+    align-items: start; /* natural card height — tops AND bottoms stagger, as in the design */
   }
 
   /* Larger breathing room below cards before the CTA (desktop design) */
