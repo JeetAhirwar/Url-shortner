@@ -414,7 +414,7 @@ h3 {
   position: relative;
   display: grid;
   gap: 4.5rem; /* space for icon overlap + connector line */
-  padding-bottom: 1rem;
+  padding-bottom: 5.5rem; /* breathing room below the cards, as designed */
 }
 
 /* Vertical connector line between cards (mobile):
@@ -737,6 +737,7 @@ h3 {
     grid-template-columns: repeat(3, 1fr);
     gap: 1.875rem;
     text-align: left;
+    padding-bottom: 9.25rem; /* large gap below cards before the CTA section */
   }
 
   /* Remove mobile vertical connector */
